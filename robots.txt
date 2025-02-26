@@ -1,0 +1,10 @@
+User-agent: *
+Disallow: /assets/styles/
+Disallow: /assets/scripts/
+Disallow: /assets/fonts/
+Disallow: /assets/audio/
+Allow: /assets/images/
+Allow: /assets/images/icons/
+Allow: /assets/images/svg/
+
+Sitemap: https://asieljimenez.github.io/sitemap.xml
