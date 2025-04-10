@@ -315,7 +315,7 @@ object{
     margin: 0%;
     padding: 0%;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: clamp(25px, 4.5vw, 50px) !important;
+    font-size: clamp(24px, 4.5vw, 50px) !important;
     transition: 0.25s;
     width: 100%;
 }
