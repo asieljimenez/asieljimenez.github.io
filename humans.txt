@@ -1,0 +1,16 @@
+/* TEAM */
+Name: Fernando Asiel Valle Jiménez
+Role: Desarrollador y Diseñador Web
+Website: https://asieljimenez.github.io/
+
+/* SITE */
+Last update: 2025-02-23
+Standards: HTML5, CSS3, JavaScript
+Libraries: AOS, Font Awesome
+Languages: Español
+
+/* THANKS */
+Thanks: A todos los usuarios y a la comunidad de código abierto.
+
+/* CONTACT */
+Email: ingenieroasiel@gmail.com
