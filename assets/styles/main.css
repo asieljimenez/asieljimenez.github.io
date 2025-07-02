@@ -75,6 +75,9 @@ img{
 object{
     user-select: none;
 }
+a{
+    text-decoration: none;
+}
 .header{
     width: calc(100% - 40px);
     background: linear-gradient(to right, #0d0d0d, #041537);
@@ -928,6 +931,12 @@ object{
 }
 .start-center{
     text-align: start;
+}
+.enlace-redes{
+    color: #ffffff;
+}
+.enlace-redes:visited{
+    color: #ffffff;
 }
 @media screen and (min-width: 0px) and (max-width: 600px) {
     .section-encabezado {
