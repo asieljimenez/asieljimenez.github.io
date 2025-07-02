@@ -556,6 +556,13 @@ object{
 .svg-html:hover{
     fill: #e38519;
 }
+.svg-php{
+    fill: #ffffff;
+    transition: 0.25s;
+}
+.svg-php:hover{
+    fill: #8892BF;
+}
 .tarjeta-1{
     position: relative;
     border-radius: 10px;
