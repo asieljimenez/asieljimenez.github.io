@@ -646,17 +646,25 @@ object{
     position: relative;
     margin: 0%;
 }
-.frontal, .trasera {
+.frontal, .trasera{
     position: absolute;
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
 }
-.frontal {
-    background: url('../images/fabulosas.webp') center/cover no-repeat;
+.frontal{
     border-radius: 8px;
+    background-color: #0a2b62;
+    overflow: hidden;
 }
-.trasera {
+.frontal img{
+    width: 100%;
+    height: auto;
+    margin: 0%;
+    padding: 0%;
+    border-radius: 5px;
+}
+.trasera{
     background-color: #f0f0f0;
     color: black;
     display: flex;
@@ -670,7 +678,7 @@ object{
     height: calc(100% - 20px);
     border-radius: 5px;
 }
-.volteada {
+.volteada{
     transform: rotateY(180deg);
 }
 .tarjeta-1-informacion{
@@ -701,12 +709,6 @@ object{
     font-weight: 300;
     text-align: justify;
     width: 100%;
-}
-.tarjeta-1-imagen img{
-    width: 100%;
-    margin: 0%;
-    padding: 0%;
-    border-radius: 5px;
 }
 .tarjeta-1-informacion h4{
     color: #ffffff;
