@@ -59,7 +59,7 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <!-- Driver.js -->
-    <link rel="stylesheet" href="node_modules/driver.js/dist/driver.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/driver.js@latest/dist/driver.css"/>
 
     <!-- Favicon -->
     <link rel="icon" href="assets/images/icons/favicon.ico">
@@ -895,8 +895,65 @@
     </a>
 
     <!-- Scripts -->
-    <script type="module" src="assets/scripts/driver.js"></script><!-- Driver.js -->
-    <script src="node_modules/driver.js/dist/driver.js.iife.js"></script><!-- Driver.js -->
+<script src="https://cdn.jsdelivr.net/npm/driver.js@latest/dist/driver.js.iife.js"></script>
+
+<script>
+const driver = window.driver.js.driver;
+const driveObjet = driver({
+
+    showProgress: true,
+    steps: [
+      {
+        element: '#id-1',
+        popover: {
+          title: 'Mis proyectos',
+          description: 'Esta es la sección de proyectos que he desarrollado.',
+        }
+      },
+      {
+        element: '#id-2',
+        popover: {
+          title: 'Accede al sitio web',
+          description: 'Al darle clic en la imagen correspondiente de cada proyecto aparecerá un ojo, el cual te dirigirá al respectivo sitio web',
+        }
+      },
+      {
+        element: '#id-3',
+        popover: {
+          title: 'Mis habilidades',
+          description: 'Conoce un poco sobre mis habilidades, lenguajes en los que soy experto; herramientas, gestores de paquetes, frameworks, librerías, etc y descubre por qué soy la mejor opción para tu proyecto y/o empresa',
+        }
+      },
+      {
+        element: '#formacion',
+        popover: {
+          title: 'Formación académica',
+          description: 'Aquí podrás conocer mi formación académica y acceder a mi C.V.',
+        }
+      },
+      {
+        element: '#id-5',
+        popover: {
+          title: 'Contáctame',
+          description: 'Ponte en contacto conmigo a través de mis redes sociales o correo electrónico',
+        }
+      },
+      {
+        element: '#id-6',
+        popover: {
+          title: 'Finalizar',
+          description: 'Disfruta de mi portafolio :D',
+        }
+      }
+    ]
+  });
+
+  document.querySelector('.boton-1').addEventListener('click', () => {
+    driveObjet.drive();
+  });
+</script>
+
+
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script><!-- AOS -->
     <script>
         AOS.init();
