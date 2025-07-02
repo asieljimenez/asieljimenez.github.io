@@ -563,6 +563,20 @@ object{
 .svg-php:hover{
     fill: #8892BF;
 }
+.svg-json{
+    fill: #ffffff;
+    transition: 0.25s;
+}
+.svg-json:hover{
+    fill: #28bc61;
+}
+.svg-sql{
+    fill: #ffffff;
+    transition: 0.25s;
+}
+.svg-sql:hover{
+    fill: #ffda44;
+}
 .tarjeta-1{
     position: relative;
     border-radius: 10px;
