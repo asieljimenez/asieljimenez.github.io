@@ -24,12 +24,12 @@
     <title>Portafolio</title>
 
     <!-- SEO -->
-    <meta name="description" content="Bienvenido a Atenagoras, tu fuente de notas digitales sobre cultura, tecnología, gastronomía, turismo y más. Explora nuestros artículos y descubre contenido relevante y actualizado sobre una variedad de temas interesantes.">
+    <meta name="description" content="Portafolio de Asiel Jiménez, ingeniero en sistemas experto en diseño y desarrollo web enfocado en soluciones creativas y funcionales.">
     <meta name="keywords" content="Portafolio">
     <meta name="author" content="Asiel Jiménez, Portafolio">
     <meta name="robots" content="index, follow">
     <meta name="googlebot" content="index, follow">
-    <meta name="subject" content="Bienvenido a Atenagoras, tu fuente de notas digitales sobre cultura, tecnología, gastronomía, turismo y más. Explora nuestros artículos y descubre contenido relevante y actualizado sobre una variedad de temas interesantes.">
+    <meta name="subject" content="Portafolio de Asiel Jiménez, ingeniero en sistemas experto en diseño y desarrollo web enfocado en soluciones creativas y funcionales.">
     <meta name="rating" content="General">
 
     <!-- Open Graph para Redes Sociales -->
@@ -57,6 +57,9 @@
 
     <!-- AOS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Driver.js -->
+    <link rel="stylesheet" href="node_modules/driver.js/dist/driver.css">
 
     <!-- Favicon -->
     <link rel="icon" href="assets/images/icons/favicon.ico">
@@ -139,7 +142,7 @@
     <main class="main">
         <section class="section-encabezado" id="inicio">
             <h1>Desarrollador <span class="span-h1">Web</span></h1>
-            <p>"Ingeniero Asiel Jiménez  (Desarrollador y Diseñador Web)"</p>
+            <p id="id-6">"Ingeniero Asiel Jiménez  (Desarrollador y Diseñador Web)"</p>
             <div class="contenedor-width-100">
                 <button class="boton-1">EXPLORAR</button>
                 <a class="boton-1" href="assets/pdf/cv-asiel-jimenez-2025.pdf" download="CV-Asiel-Jimenez">CV</a>
@@ -161,7 +164,7 @@
 
             <div class="contenedor-grupos">
                 <div class="contenedor-width-100" style="position: relative; z-index: 2;">
-                    <h2 class="h2-1">Mis proyectos</h2>
+                    <h2 class="h2-1" id="id-1">Mis proyectos</h2>
 
                     <div class="contenedor-botones">
                         <button class="boton-2" id="boton-atras">&lt;</button>
@@ -358,7 +361,7 @@
                         </div>
                     </div>
 
-                    <div class="tarjeta-1" data-aos="zoom-in" data-aos-duration="2500">
+                    <div class="tarjeta-1" data-aos="zoom-in" data-aos-duration="2500" id="id-2">
                         <div class="tarjeta-1-informacion">
                             <div class="contenedor-width-100">
                                 <h3 class="center">ATENAGORAS</h3>
@@ -673,7 +676,7 @@
                 <img src="assets/images/franjas.webp" alt="Asiel Jiménez | Franjas" title="Asiel Jiménez | Franjas" class="imagen-franjas" style="transform: rotate(180deg);" loading="lazy">
             </div>
 
-            <div class="contenedor-width-100">
+            <div class="contenedor-width-100" id="id-3">
 
                 <div class="contenedor-width-100-parte-1 ajuste-top-1">
                     <div class="contenedor-width-100" style="justify-content: start; position: relative;">
@@ -870,17 +873,19 @@
         </div>
         
         <div class="contenedor-width-100">
-            <a href="https://github.com/asieljimenez" target="_blank" class="enlace-redes">
-                <i class="fa-brands fa-github" title="GitHub"></i>
-            </a>
-            <a href="https://www.linkedin.com/in/asiel-jim%C3%A9nez-b38398261/" target="_blank" class="enlace-redes">
-                <i class="fa-brands fa-instagram" title="Instagram"></i>
-            </a>
-            <a href="https://www.linkedin.com/in/asiel-jim%C3%A9nez-b38398261/" target="_blank" class="enlace-redes">
-                <i class="fa-brands fa-linkedin-in" title="LinkedIn"></i>
-            </a>
-            <i class="fa-solid fa-envelope" title="Correo Electrónico"></i>
-            <i class="fa-brands fa-tiktok" title="TikTok"></i>
+            <div id="id-5" style="display: flex; flex-wrap: wrap; justify-content: center; grid-gap: 25px 25px;">
+                <a href="https://github.com/asieljimenez" target="_blank" class="enlace-redes">
+                    <i class="fa-brands fa-github" title="GitHub"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/asiel-jim%C3%A9nez-b38398261/" target="_blank" class="enlace-redes">
+                    <i class="fa-brands fa-instagram" title="Instagram"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/asiel-jim%C3%A9nez-b38398261/" target="_blank" class="enlace-redes">
+                    <i class="fa-brands fa-linkedin-in" title="LinkedIn"></i>
+                </a>
+                <i class="fa-solid fa-envelope" title="Correo Electrónico"></i>
+                <i class="fa-brands fa-tiktok" title="TikTok"></i>
+            </div>
         </div>
     </footer>
 
@@ -890,6 +895,8 @@
     </a>
 
     <!-- Scripts -->
+    <script type="module" src="assets/scripts/driver.js"></script><!-- Driver.js -->
+    <script src="node_modules/driver.js/dist/driver.js.iife.js"></script><!-- Driver.js -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script><!-- AOS -->
     <script>
         AOS.init();
