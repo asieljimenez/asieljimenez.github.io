@@ -533,6 +533,7 @@ a{
 .span-h1{
     background: linear-gradient(90deg, #67c6ec, 70%, #ff76bd);
     background-size: 400% 400%; 
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: gradient 5s ease infinite;
