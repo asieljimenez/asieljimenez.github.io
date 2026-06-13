@@ -30,4 +30,4 @@ function hacerArrastrable(hoja) {
     });
 }
 
-setInterval(crearHoja, 1000);
+setInterval(crearHoja, 1750);

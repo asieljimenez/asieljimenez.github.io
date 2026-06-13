@@ -1,9 +1,9 @@
 const ids = ['id-tarjeta-1-imagen-1', 'id-tarjeta-1-imagen-2', 'id-tarjeta-1-imagen-3', 'id-tarjeta-1-imagen-4', 'id-tarjeta-1-imagen-5', 'id-tarjeta-1-imagen-6'];
 
 ids.forEach(function(id) {
-  document.getElementById(id).addEventListener('click', function() {
-    this.querySelector('.tarjeta').classList.toggle('volteada');
-  });
+    document.getElementById(id).addEventListener('click', function() {
+        this.querySelector('.tarjeta').classList.toggle('volteada');
+    });
 });
 
 const botonAtras = document.getElementById("boton-atras");
@@ -24,34 +24,35 @@ botonAdelante.addEventListener("click", () => {
     });
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-  const starField = document.querySelector('.stars');
-  const numberOfStars = 150;
-  for (let i = 0; i < numberOfStars; i++) {
-      const star = document.createElement('div');
-      star.classList.add('star');
-      
-      const x = Math.random() * starField.offsetWidth;
-      const y = Math.random() * starField.offsetHeight;
+document.addEventListener("DOMContentLoaded", function() {
+    const starField = document.querySelector('.stars');
+    const numberOfStars = 150;
+    for (let i = 0; i < numberOfStars; i++) {
+        const star = document.createElement('div');
+        star.classList.add('star');
 
-      star.style.left = `${x}px`;
-      star.style.top = `${y}px`;
-      
-      const size = Math.random() * 2 + 1;
-      star.style.width = `${size}px`;
-      star.style.height = `${size}px`;
+        const x = Math.random() * starField.offsetWidth;
+        const y = Math.random() * starField.offsetHeight;
 
-      starField.appendChild(star);
-  }
+        star.style.left = `${x}px`;
+        star.style.top = `${y}px`;
+
+        const size = Math.random() * 2 + 1;
+        star.style.width = `${size}px`;
+        star.style.height = `${size}px`;
+
+        starField.appendChild(star);
+    }
 });
 
 // Selecciona el enlace y la imagen dentro de él
 const header = document.getElementById('soyunid');
 const boton = document.querySelector('.boton-3');
 const botonImagen = document.querySelector('.boton-3 img');
+
 function handleScroll() {
     if (window.scrollY < 20) {
-        header.style.background="transparent";
+        header.style.background = "transparent";
 
         botonImagen.classList.remove('boton-3-despues');
         botonImagen.classList.add('boton-3-antes');
@@ -59,8 +60,7 @@ function handleScroll() {
         botonImagen.setAttribute('alt', 'Ir al final');
         botonImagen.setAttribute('title', 'Ir al final');
     } else {
-        header.style.background="linear-gradient(to right, #0d0d0d, #041537)";
-        
+
         botonImagen.classList.remove('boton-3-antes');
         botonImagen.classList.add('boton-3-despues');
         boton.setAttribute('href', '#inicio');
@@ -91,12 +91,14 @@ function menu_celular() {
     });
     console.log(opciones);
 }
-function menu_celular_cerrar(){
+
+function menu_celular_cerrar() {
     menu.style.display = "none";
 }
 
 //Script para copiar el correo al porta papeles
 const direccion = document.getElementById('id_direccion').textContent;
+
 function copiarcorreo() {
     navigator.clipboard.writeText(direccion)
         .catch(err => {
