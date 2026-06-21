@@ -136,7 +136,7 @@ html {
 }
 
 .logo {
-    height: 40px;
+    height: auto;
     object-fit: cover;
 }
 
@@ -276,7 +276,7 @@ html {
     align-items: center;
     align-content: center;
     justify-content: start;
-    margin-top: clamp(50px, 10vw, 200px);
+    margin-top: clamp(0px, 10vw, 200px);
     width: 100%;
     flex-direction: column;
     gap: clamp(15px, 2vw, 25px);
