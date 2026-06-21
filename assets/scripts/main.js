@@ -15,7 +15,7 @@ window.addEventListener("scroll", () => {
 
 const contenedorPetalos = document.querySelector(".petalos");
 
-function crearPetalo(){
+function crearPetalo() {
 
     const petalo = document.createElement("div");
 
@@ -26,15 +26,25 @@ function crearPetalo(){
     petalo.style.left = Math.random() * 100 + "vw";
 
 
-    // tamaños aleatorios
-    const tamaño = Math.random() * 20 + 15;
+    // detectar móvil
+    const esMovil = window.innerWidth <= 700;
+
+
+    // tamaños más pequeños en móvil
+    const tamaño = esMovil ?
+        Math.random() * 10 + 8 :
+        Math.random() * 20 + 15;
+
 
     petalo.style.width = tamaño + "px";
     petalo.style.height = tamaño * 0.7 + "px";
 
 
-    // caída más lenta
-    const duracion = Math.random() * 5 + 10;
+    // duración más rápida en móvil (menos carga)
+    const duracion = esMovil ?
+        Math.random() * 4 + 6 :
+        Math.random() * 5 + 10;
+
 
     petalo.style.animationDuration =
         duracion + "s," +
@@ -42,7 +52,6 @@ function crearPetalo(){
         (Math.random() * 2 + 3) + "s";
 
 
-    // menos aparición junta
     petalo.style.animationDelay =
         Math.random() * 5 + "s";
 
@@ -50,12 +59,14 @@ function crearPetalo(){
     contenedorPetalos.appendChild(petalo);
 
 
-    // eliminar después de terminar realmente
-    setTimeout(()=>{
-    petalo.remove();
-}, (duracion + 15) * 1000);
+    setTimeout(() => {
+        petalo.remove();
+    }, (duracion + 15) * 1000);
 
 }
 
 
-setInterval(crearPetalo,400);
+// menos partículas en móvil
+const intervalo = window.innerWidth <= 700 ? 900 : 400;
+
+setInterval(crearPetalo, intervalo);
