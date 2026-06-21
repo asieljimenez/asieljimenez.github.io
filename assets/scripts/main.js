@@ -1,107 +1,61 @@
-const ids = ['id-tarjeta-1-imagen-1', 'id-tarjeta-1-imagen-2', 'id-tarjeta-1-imagen-3', 'id-tarjeta-1-imagen-4', 'id-tarjeta-1-imagen-5', 'id-tarjeta-1-imagen-6'];
+/* Texto desvancedio del encabezado */
+const texto = document.getElementById("id-contenedor-encabezado");
 
-ids.forEach(function(id) {
-    document.getElementById(id).addEventListener('click', function() {
-        this.querySelector('.tarjeta').classList.toggle('volteada');
-    });
+window.addEventListener("scroll", () => {
+    const scroll = window.scrollY;
+
+    const opacidad = 1 - scroll / 500;
+
+    texto.style.opacity = Math.max(opacidad, 0);
 });
 
-const botonAtras = document.getElementById("boton-atras");
-const botonAdelante = document.getElementById("boton-adelante");
-const carrusel = document.getElementById("carrusel");
 
-botonAtras.addEventListener("click", () => {
-    carrusel.scrollBy({
-        left: -300,
-        behavior: 'smooth'
-    });
-});
 
-botonAdelante.addEventListener("click", () => {
-    carrusel.scrollBy({
-        left: 300,
-        behavior: 'smooth'
-    });
-});
 
-document.addEventListener("DOMContentLoaded", function() {
-    const starField = document.querySelector('.stars');
-    const numberOfStars = 150;
-    for (let i = 0; i < numberOfStars; i++) {
-        const star = document.createElement('div');
-        star.classList.add('star');
 
-        const x = Math.random() * starField.offsetWidth;
-        const y = Math.random() * starField.offsetHeight;
+const contenedorPetalos = document.querySelector(".petalos");
 
-        star.style.left = `${x}px`;
-        star.style.top = `${y}px`;
+function crearPetalo(){
 
-        const size = Math.random() * 2 + 1;
-        star.style.width = `${size}px`;
-        star.style.height = `${size}px`;
+    const petalo = document.createElement("div");
 
-        starField.appendChild(star);
-    }
-});
+    petalo.classList.add("petalo");
 
-// Selecciona el enlace y la imagen dentro de él
-const header = document.getElementById('soyunid');
-const boton = document.querySelector('.boton-3');
-const botonImagen = document.querySelector('.boton-3 img');
 
-function handleScroll() {
-    if (window.scrollY < 20) {
-        header.style.background = "transparent";
+    // posición inicial
+    petalo.style.left = Math.random() * 100 + "vw";
 
-        botonImagen.classList.remove('boton-3-despues');
-        botonImagen.classList.add('boton-3-antes');
-        boton.setAttribute('href', '#footer');
-        botonImagen.setAttribute('alt', 'Ir al final');
-        botonImagen.setAttribute('title', 'Ir al final');
-    } else {
 
-        botonImagen.classList.remove('boton-3-antes');
-        botonImagen.classList.add('boton-3-despues');
-        boton.setAttribute('href', '#inicio');
-        botonImagen.setAttribute('alt', 'Ir al inicio');
-        botonImagen.setAttribute('title', 'Ir al inicio');
-    }
-}
-window.addEventListener('scroll', handleScroll);
-handleScroll();
+    // tamaños aleatorios
+    const tamaño = Math.random() * 20 + 15;
 
-// Script para reproducir sonido de buho
-const imagenBuho = document.getElementById('imagen-buho');
-const audioBuho = document.getElementById('audio-buho');
-imagenBuho.addEventListener('click', function() {
-    audioBuho.play();
-});
+    petalo.style.width = tamaño + "px";
+    petalo.style.height = tamaño * 0.7 + "px";
 
-// Script para el menú del celular
-const opciones = document.querySelectorAll('.nav-ul-li a');
-const mainmenu = document.getElementById('id_contenedor_menu_main');
-const menu = document.getElementById('menu-celular');
 
-function menu_celular() {
-    menu.style.display = "flex";
-    opciones.forEach(opcion => {
-        mainmenu.appendChild(opcion);
-        opcion.addEventListener('click', menu_celular_cerrar);
-    });
-    console.log(opciones);
+    // caída más lenta
+    const duracion = Math.random() * 5 + 10;
+
+    petalo.style.animationDuration =
+        duracion + "s," +
+        (Math.random() * 2 + 3) + "s," +
+        (Math.random() * 2 + 3) + "s";
+
+
+    // menos aparición junta
+    petalo.style.animationDelay =
+        Math.random() * 5 + "s";
+
+
+    contenedorPetalos.appendChild(petalo);
+
+
+    // eliminar después de terminar realmente
+    setTimeout(()=>{
+    petalo.remove();
+}, (duracion + 15) * 1000);
+
 }
 
-function menu_celular_cerrar() {
-    menu.style.display = "none";
-}
 
-//Script para copiar el correo al porta papeles
-const direccion = document.getElementById('id_direccion').textContent;
-
-function copiarcorreo() {
-    navigator.clipboard.writeText(direccion)
-        .catch(err => {
-            console.error('Error al copiar: ', err);
-        });
-}
+setInterval(crearPetalo,400);
