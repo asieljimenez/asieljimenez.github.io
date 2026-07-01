@@ -885,8 +885,15 @@ html {
         margin-top: 60px;
     }
     .tarjeta-proyecto-japonesa {
-        min-width: 330px;
-        width: 330px;
+        min-width: 350px;
+        width: 350px;
+    }
+}
+
+@media screen and (min-width: 0px) and (max-width: 500px) {
+    .tarjeta-proyecto-japonesa {
+        min-width: 320px;
+        width: 320px;
     }
 }
 
