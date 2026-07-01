@@ -569,7 +569,7 @@ html {
 
 .tarjeta-proyecto-japonesa {
     position: relative;
-    min-width: 350px;
+    min-width: 450px;
     width: 450px;
     border: 1px solid rgba(224, 224, 224, 0.6);
     border-radius: 6px;
@@ -677,21 +677,24 @@ html {
 .cuerpo-tarjeta {
     padding: clamp(18px, 2vw, 25px);
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    width: calc(100% - clamp(36px, 4vw, 50px));
 }
 
 .encabezado-contenido {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     gap: 12px;
     margin-bottom: 15px;
+    width: 100%;
 }
 
 
 /* Sello Kanji */
 
 .kanji-sello {
-    font-size: 1.8rem;
+    font-size: clamp(18px, 2vw, 23px);
     color: #ffffff;
     font-weight: 600;
     line-height: 1;
@@ -699,7 +702,7 @@ html {
 }
 
 .titulo-proyecto {
-    font-size: 1.3rem;
+    font-size: clamp(18px, 2vw, 23px);
     color: #ffffff;
     margin: 0;
     font-weight: 400;
@@ -880,6 +883,10 @@ html {
     }
     .contenedor-informacion-encabezado {
         margin-top: 60px;
+    }
+    .tarjeta-proyecto-japonesa {
+        min-width: 330px;
+        width: 330px;
     }
 }
 
