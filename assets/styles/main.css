@@ -181,7 +181,6 @@ html {
     height: 100%;
     z-index: 90;
     background: linear-gradient(150deg, #0a2b62, 10%, #000000) !important;
-    /* 143359 0a2b62 ó 000000 */
     display: none;
     flex-wrap: wrap;
     align-content: center;
@@ -276,13 +275,17 @@ html {
     align-items: center;
     align-content: center;
     justify-content: start;
-    /*margin-top: clamp(0px, 10vw, 200px);*/
     width: 100%;
     flex-direction: column;
     gap: clamp(15px, 2vw, 25px);
     z-index: 6;
 }
 
+
+
+
+
+/* SECCIÓN ENCABEZADO | INICIO */
 .section-encabezado {
     width: calc(100% - clamp(50px, 16vw, 200px));
     height: calc(100vh - clamp(50px, 16vw, 200px));
@@ -320,9 +323,6 @@ html {
     animation: caer linear infinite, viento ease-in-out infinite alternate, girar ease-in-out infinite;
 }
 
-
-/* brillo interior del pétalo */
-
 .petalo::before {
     content: "";
     position: absolute;
@@ -334,9 +334,6 @@ html {
     border-radius: 50%;
     filter: blur(5px);
 }
-
-
-/* nervadura del pétalo */
 
 .petalo::after {
     content: "";
@@ -350,9 +347,6 @@ html {
     filter: blur(.5px);
 }
 
-
-/* caída */
-
 @keyframes caer {
     0% {
         transform: translateY(-20vh) rotate(0deg);
@@ -362,8 +356,6 @@ html {
     }
 }
 
-
-/* viento */
 
 @keyframes viento {
     0% {
@@ -514,7 +506,13 @@ html {
         margin-top: 150px;
     }
 }
+/* SECCIÓN ENCABEZADO | FINAL */
 
+
+
+
+
+/* SECCIÓN PROYECTOS | INICIO */
 .section-proyectos {
     width: calc(100% - clamp(50px, 16vw, 200px));
     height: auto;
@@ -554,18 +552,12 @@ html {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    /* evita que bajen */
     justify-content: start;
     gap: 30px;
-    /*width: calc(100% - clamp(25px, 3.5vw, 100px));*/
     overflow-x: auto;
-    /* scroll horizontal */
     overflow-y: hidden;
     gap: clamp(25px, 3.5vw, 50px);
 }
-
-
-/* Estructura de la Tarjeta */
 
 .tarjeta-proyecto-japonesa {
     position: relative;
@@ -576,12 +568,18 @@ html {
     box-shadow: 0 10px 40px rgba(179, 17, 20, 0.05);
     box-sizing: border-box;
     overflow: hidden;
-    transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+    transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease, clip-path 0.4s ease;
     margin-bottom: 20px;
+    clip-path: polygon(
+        0% 0%,
+        calc(100% - 26px) 0%,
+        100% 26px,
+        100% 100%,
+        26px 100%,
+        0% calc(100% - 26px)
+    );
 }
 
-
-/* Fondo blur */
 
 .tarjeta-proyecto-japonesa::before {
     content: "";
@@ -594,24 +592,25 @@ html {
 }
 
 
-/* Mantener contenido arriba */
-
 .tarjeta-proyecto-japonesa>* {
     position: relative;
     z-index: 1;
 }
 
 
-/* Efectos al pasar el cursor sobre la tarjeta */
-
 .tarjeta-proyecto-japonesa:hover {
     transform: translateY(-8px);
     border-color: rgba(222, 10, 20, 0.4);
     box-shadow: 0 15px 50px rgba(179, 17, 20, 0.1);
+    clip-path: polygon(
+        0% 0%,
+        calc(100% - 32px) 0%,
+        100% 32px,
+        100% 100%,
+        32px 100%,
+        0% calc(100% - 32px)
+    );
 }
-
-
-/* Cabecera de la Tarjeta (Imagen y Loto) */
 
 .cabecera-tarjeta {
     position: relative;
@@ -625,19 +624,14 @@ html {
     width: 100%;
     height: auto;
     object-fit: cover;
-    /* Ajuste perfecto de la imagen */
     transition: transform 0.6s ease;
 }
 
-
-/* Efecto Zoom en la imagen */
 
 .tarjeta-proyecto-japonesa:hover .imagen-proyecto {
     transform: scale(1.1);
 }
 
-
-/* Overlay Glassmorphism con el Loto */
 
 .overlay-loto-vidrio {
     position: absolute;
@@ -652,27 +646,20 @@ html {
     padding: 0px;
     box-sizing: border-box;
     pointer-events: none;
-    /* No interfiere con clics */
 }
 
 .icono-loto-svg {
     width: 50px;
     height: 30px;
     opacity: 0.2;
-    /* Loto muy sutil sobre la imagen */
     transition: opacity 0.4s ease, transform 0.4s ease;
 }
-
-
-/* Efecto Loto al hover */
 
 .tarjeta-proyecto-japonesa:hover .icono-loto-svg {
     opacity: 0.5;
     transform: translateY(-5px);
 }
 
-
-/* Cuerpo de la Tarjeta */
 
 .cuerpo-tarjeta {
     padding: clamp(18px, 2vw, 25px);
@@ -689,9 +676,6 @@ html {
     margin-bottom: 15px;
     width: 100%;
 }
-
-
-/* Sello Kanji */
 
 .kanji-sello {
     font-size: clamp(18px, 2vw, 23px);
@@ -721,17 +705,14 @@ html {
 
 .portafolio-japones-contenedor::-webkit-scrollbar {
     height: 8px;
-    /* tamaño de la barra horizontal */
 }
 
 .portafolio-japones-contenedor::-webkit-scrollbar-track {
     background: transparent;
-    /* quita el fondo */
 }
 
 .portafolio-japones-contenedor::-webkit-scrollbar-thumb {
     background: #bd2f8d;
-    /* color de la barra */
     border-radius: 20px;
 }
 
@@ -739,8 +720,6 @@ html {
     background: #ff758f;
 }
 
-
-/* Etiquetas de Tecnologías (Tags) */
 
 .tecnologias-tags {
     display: flex;
@@ -759,9 +738,6 @@ html {
     text-transform: uppercase;
     letter-spacing: 1px;
 }
-
-
-/* Botón de Acción */
 
 .boton-ver-proyecto {
     align-self: flex-start;
@@ -784,8 +760,6 @@ html {
     color: #ffffff;
 }
 
-
-/* Marcos Ornamentales Lineales (Ajustados) */
 
 .marcos-ornamentales .angulo-ornamental {
     position: absolute;
@@ -830,7 +804,7 @@ html {
     content: "";
     position: absolute;
     inset: -30px;
-    background: /* partículas vino */
+    background:
     radial-gradient(circle at 8% 18%, rgba(179, 17, 20, .18) 0 5px, transparent 6px), radial-gradient(circle at 22% 72%, rgba(179, 17, 20, .14) 0 7px, transparent 8px), radial-gradient(circle at 38% 30%, rgba(179, 17, 20, .16) 0 4px, transparent 5px), radial-gradient(circle at 55% 80%, rgba(179, 17, 20, .12) 0 6px, transparent 7px), radial-gradient(circle at 75% 22%, rgba(179, 17, 20, .18) 0 5px, transparent 6px), radial-gradient(circle at 90% 65%, rgba(179, 17, 20, .15) 0 8px, transparent 9px), /* partículas blancas */
     radial-gradient(circle at 15% 45%, rgba(255, 255, 255, .8) 0 7px, transparent 8px), radial-gradient(circle at 48% 15%, rgba(255, 255, 255, .7) 0 9px, transparent 10px), radial-gradient(circle at 68% 55%, rgba(255, 255, 255, .75) 0 6px, transparent 7px), radial-gradient(circle at 82% 85%, rgba(255, 255, 255, .6) 0 10px, transparent 11px), /* fondo */
     linear-gradient( 135deg, #faf5f4, #f6e8e6);
@@ -847,9 +821,6 @@ html {
     opacity: .8;
     z-index: -1;
 }
-
-
-/* mantiene el texto arriba */
 
 .h2-secciones>* {
     position: relative;
@@ -876,6 +847,26 @@ html {
     pointer-events: none;
 }
 
+.imagen-franjas-1{
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 50%;
+}
+
+.imagen-franjas-2{
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    width: 50%;
+}
+
+.separador-proyectos{
+    width: 100%;
+    display: flex;
+    height: clamp(0px, 10vw, 75px);
+}
+
 @media screen and (min-width: 0px) and (max-width: 700px) {
     .imagen-garza {
         left: 25px;
@@ -896,10 +887,36 @@ html {
         width: 320px;
     }
 }
+/* SECCIÓN PROYECTOS | FINAL */
 
 
-/* FOOTER INICIO */
 
+
+
+/* SECCIÓN HABILIDAES | INICIO */
+.seccion-habilidades{
+    width: calc(100% - clamp(50px, 16vw, 200px));
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    background-image: url('../images/2.png');
+    background-size: cover;
+    background-position: top;
+    position: relative;
+    padding: clamp(25px, 8vw, 100px);
+    transform: translateY(-1px);
+    gap: clamp(25px, 8vw, 50px);
+}
+/* SECCIÓN HABILIDAES | FINAL */
+
+
+
+
+
+/* FOOTER | NICIO */
 .footer {
     transform: translateY(-1px);
     background-color: #000000;
@@ -909,8 +926,6 @@ html {
 }
 
 
-/* --- OPCIÓN 1: PIE FACETAS --- */
-
 .pie-facetas {
     transform: translateY(-1px);
     background-color: #0b090a;
@@ -919,7 +934,6 @@ html {
     color: #ffffff;
     overflow: hidden;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-    /* Responsividad matemática fluida en márgenes internos */
     padding-top: clamp(60px, calc(5vw + 20px), 110px);
     padding-bottom: clamp(20px, calc(2vw + 10px), 40px);
     padding-left: clamp(20px, 4vw, 60px);
@@ -927,14 +941,11 @@ html {
 }
 
 
-/* Borde poligonal asimétrico fluido */
-
 .patron-poligonal-superior {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    /* La altura se adapta matemáticamente al ancho de la pantalla */
     height: clamp(8px, calc(1vw + 4px), 20px);
     background: linear-gradient(90deg, #ff4d6d 0%, #ff758f 50%, #c9184a 100%);
     clip-path: polygon(0% 0%, 15% 0%, 20% 70%, 45% 0%, 65% 100%, 80% 20%, 90% 85%, 100% 0%, 100% 100%, 0% 100%);
@@ -952,7 +963,6 @@ html {
 }
 
 .columna-identidad {
-    /* Crece de forma responsiva hasta un máximo del 40% */
     flex: 1 1 clamp(280px, calc(35% - 20px), 450px);
 }
 
@@ -965,7 +975,6 @@ html {
     justify-content: center;
     margin-bottom: 25px;
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-    /* Hexágono puro */
     transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.4s ease;
 }
 
@@ -1077,6 +1086,22 @@ html {
     transform: translateY(-2px);
 }
 
+.imagen-franjas-3{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 50%;
+    transform: scaleY(-1);
+}
+
+.imagen-franjas-4{
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    width: 50%;
+    transform: scaleY(-1);
+}
+
 @media screen and (min-width: 0px) and (max-width: 800px) {
     .subtitulo-premium {
         text-align: center;
@@ -1112,6 +1137,4 @@ html {
         text-align: center;
     }
 }
-
-
-/* FOOTER FINAL */
+/* FOOTER | FINAL */
