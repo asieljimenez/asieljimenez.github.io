@@ -3,6 +3,8 @@
     src: url("../fonts/Midorima-PersonalUse-Regular.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
+
+    font-display: swap;
 }
 
 html {
@@ -539,15 +541,6 @@ html {
     z-index: 2;
 }
 
-.tarjeta-proyectos {
-    min-width: 330px;
-    width: 330px;
-    height: 200px;
-    padding: clamp(15px, 1.75vw, 25px);
-    background-image: url('../images/marco2.png');
-    background-size: cover;
-}
-
 .portafolio-japones-contenedor {
     display: flex;
     flex-direction: row;
@@ -1065,7 +1058,7 @@ html {
 
 .creditos {
     font-size: clamp(0.8rem, calc(0.1vw + 0.75rem), 0.9rem);
-    color: #666666;
+    color: #828282;
 }
 
 .redes-minimalistas {
@@ -1074,7 +1067,7 @@ html {
 }
 
 .vinculo-red {
-    color: #666666;
+    color: #828282;
     text-decoration: none;
     font-size: 0.85rem;
     letter-spacing: 1px;
