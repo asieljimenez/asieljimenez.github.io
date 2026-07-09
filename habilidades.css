@@ -1,0 +1,375 @@
+/* ============================================================
+   SECCIÓN HABILIDADES — Carrusel "Ema" + Medidor Kintsugi
+   Concepto: cada habilidad es una tablilla votiva (ema) que
+   cuelga de un riel de templo. El nivel de dominio se revela
+   como una grieta de oro (kintsugi) que "repara" la tablilla.
+   ============================================================ */
+
+.seccion-habilidades {
+    overflow: hidden;
+    isolation: isolate;
+}
+
+/* Patrón Seigaiha (olas japonesas) de fondo, muy sutil */
+.patron-seigaiha {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: .5;
+    background-image:
+        repeating-radial-gradient(circle at 0 100%, transparent 0, transparent 26px, rgba(255, 77, 109, .05) 26px, rgba(255, 77, 109, .05) 28px, transparent 28px, transparent 54px),
+        repeating-radial-gradient(circle at 60px 100%, transparent 0, transparent 26px, rgba(212, 175, 55, .04) 26px, rgba(212, 175, 55, .04) 28px, transparent 28px, transparent 54px);
+    background-size: 60px 60px;
+    mask-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, .8) 35%, rgba(0, 0, 0, .8) 100%);
+}
+
+.titulo-habilidades {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    text-align: center;
+    font-family: "Samurai", sans-serif;
+    font-style: normal;
+    font-size: clamp(25px, 3.5vw, 45px);
+    color: #f4e9df;
+    letter-spacing: 1px;
+    text-shadow: 0 0 25px rgba(212, 175, 55, .35), 0 4px 12px rgba(0, 0, 0, .6);
+}
+
+.titulo-habilidades span {
+    display: block;
+    font-family: "Roboto", sans-serif;
+    font-size: clamp(11px, 1.2vw, 13px);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #ff4d6d;
+    font-weight: 600;
+    margin-bottom: 10px;
+    text-shadow: none;
+}
+
+.subtitulo-habilidades {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 640px;
+    margin: -10px auto 0 auto;
+    text-align: center;
+    color: #ffffff;
+    font-size: clamp(13px, 1.4vw, 16px);
+    line-height: 1.7;
+}
+
+/* ---------- Estructura del carrusel ---------- */
+.carrusel-habilidades-wrapper {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(10px, 2vw, 25px);
+}
+
+.carrusel-habilidades {
+    width: 100%;
+    max-width: 1300px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    cursor: grab;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding: 50px 4px 20px 4px;
+}
+
+.carrusel-habilidades::-webkit-scrollbar {
+    display: none;
+}
+
+.carrusel-habilidades.arrastrando {
+    cursor: grabbing;
+    scroll-snap-type: none;
+}
+
+.carrusel-habilidades:focus-visible {
+    outline: 1px dashed rgba(212, 175, 55, .6);
+    outline-offset: 6px;
+}
+
+.pista-habilidades {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    width: max-content;
+    gap: clamp(30px, 4vw, 55px);
+    padding: 0 clamp(15px, 4vw, 40px);
+}
+
+/* Riel de templo del que cuelgan las tablillas */
+.barra-templo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    border-radius: 2px;
+    background: linear-gradient(180deg, #8b0909 0%, #400202 100%);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, .6), inset 0 1px 0 rgba(255, 255, 255, .08);
+}
+.barra-templo::before,
+.barra-templo::after {
+    content: "";
+    position: absolute;
+    top: -3px;
+    width: 14px;
+    height: 14px;
+    background: radial-gradient(circle at 35% 35%, #d4af37, #7a5c17 75%);
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(212, 175, 55, .5);
+}
+
+.barra-templo::before {
+    left: -7px;
+}
+
+.barra-templo::after {
+    right: -7px;
+}
+
+/* ---------- Tablilla (tarjeta de habilidad) ---------- */
+.tarjeta-habilidad {
+    position: relative;
+    flex: 0 0 auto;
+    width: clamp(240px, 22vw, 280px);
+    margin-top: 40px;
+    scroll-snap-align: center;
+    transform-origin: top center;
+    animation: balanceo-tablilla 6s ease-in-out infinite;
+    animation-delay: calc(var(--indice, 0) * -0.7s);
+    transition: transform .5s cubic-bezier(.2, .8, .2, 1);
+}
+
+.tarjeta-habilidad:hover,
+.tarjeta-habilidad:focus-within {
+    animation-play-state: paused;
+    transform: translateY(-10px) rotate(0deg) scale(1.03);
+}
+
+/* Cuerda que une la tablilla al riel */
+.cuerda-habilidad {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    width: 3px;
+    height: 40px;
+    transform: translateX(-50%);
+    background: repeating-linear-gradient(180deg, #7a1013 0 5px, #b31114 5px 10px);
+    box-shadow: 0 0 6px rgba(179, 17, 20, .5);
+}
+
+.cuerpo-tablilla {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    padding: 34px 22px 26px;
+    background: linear-gradient(160deg, #e40101 0%, #8b0909 100%);
+    border: 1px solid rgba(212, 175, 55, .25);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, .55), inset 0 0 30px rgba(179, 17, 20, .06);
+    clip-path: polygon(0% 10%, 50% 0%, 100% 10%, 100% 100%, 0% 100%);
+    transition: border-color .4s ease, box-shadow .4s ease;
+}
+
+.tarjeta-habilidad:hover .cuerpo-tablilla,
+.tarjeta-habilidad:focus-within .cuerpo-tablilla {
+    border-color: rgba(212, 175, 55, .65);
+    box-shadow: 0 25px 55px rgba(0, 0, 0, .65), 0 0 35px rgba(212, 175, 55, .18), inset 0 0 30px rgba(179, 17, 20, .1);
+}
+
+.kanji-habilidad {
+    font-size: clamp(38px, 4.5vw, 50px);
+    line-height: 1;
+    font-weight: 600;
+    background: linear-gradient(160deg, #f4e2a1 0%, #d4af37 45%, #8a6a1c 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, .5));
+    margin-bottom: 2px;
+}
+
+.titulo-habilidad {
+    font-family: "Samurai", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: clamp(17px, 1.8vw, 20px);
+    color: #ffffff;
+    letter-spacing: .5px;
+}
+
+.descripcion-habilidad {
+    font-family: "Roboto", sans-serif;
+    font-size: .85rem;
+    line-height: 1.55;
+    color: #a8a29e;
+    min-height: 44px;
+}
+
+/* Medidor kintsugi */
+.medidor-kintsugi {
+    position: relative;
+    width: 100%;
+    margin-top: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+.grieta-svg {
+    width: 100%;
+    height: 20px;
+    overflow: visible;
+}
+
+.grieta-fondo {
+    fill: none;
+    stroke: rgba(255, 255, 255, .14);
+    stroke-width: 2;
+    stroke-linecap: round;
+}
+
+.grieta-oro {
+    fill: none;
+    stroke: url(#gradienteOro);
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    filter: drop-shadow(0 0 4px rgba(212, 175, 55, .8));
+    transition: stroke-dashoffset 1.6s cubic-bezier(.16, 1, .3, 1);
+}
+
+.tarjeta-habilidad.en-vista .grieta-oro {
+    stroke-dashoffset: calc(100 - var(--nivel, 0));
+}
+
+.porcentaje-habilidad {
+    font-family: "Roboto", sans-serif;
+    font-size: .7rem;
+    letter-spacing: 2px;
+    color: #d4af37;
+    font-weight: 700;
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity .6s ease .6s, transform .6s ease .6s;
+}
+
+.tarjeta-habilidad.en-vista .porcentaje-habilidad {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.tarjeta-habilidad .marcos-ornamentales .angulo-ornamental {
+    border-color: rgba(212, 175, 55, .5);
+}
+
+@keyframes balanceo-tablilla {
+    0%, 100% {
+        transform: rotate(-1.1deg);
+    }
+    50% {
+        transform: rotate(1.1deg);
+    }
+}
+
+/* ---------- Controles ---------- */
+.boton-carrusel {
+    flex: 0 0 auto;
+    width: clamp(42px, 4vw, 52px);
+    height: clamp(42px, 4vw, 52px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(160deg, #de0a14, #7a0d10);
+    color: #ffffff;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    box-shadow: 0 8px 20px rgba(179, 17, 20, .35);
+    transition: transform .3s cubic-bezier(.2, .8, .2, 1), box-shadow .3s ease, background .3s ease;
+}
+
+.boton-carrusel:hover {
+    transform: scale(1.08) rotate(90deg);
+    box-shadow: 0 10px 28px rgba(212, 175, 55, .35);
+    background: linear-gradient(160deg, #d4af37, #7a5c17);
+}
+
+.boton-carrusel:active {
+    transform: scale(.94) rotate(90deg);
+}
+
+.indicadores-carrusel {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: -10px;
+}
+
+.indicador-punto {
+    width: 10px;
+    height: 10px;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    background: rgba(255, 255, 255, .18);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    transition: background .35s ease, transform .35s ease;
+}
+
+.indicador-punto:hover {
+    background: rgba(212, 175, 55, .55);
+}
+
+.indicador-punto.activo {
+    background: linear-gradient(160deg, #f4e2a1, #d4af37);
+    transform: scale(1.35);
+    box-shadow: 0 0 10px rgba(212, 175, 55, .6);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .tarjeta-habilidad {
+        animation: none;
+    }
+    .grieta-oro,
+    .porcentaje-habilidad,
+    .boton-carrusel,
+    .tarjeta-habilidad {
+        transition-duration: .01ms !important;
+    }
+}
+
+@media screen and (min-width: 0px) and (max-width: 700px) {
+    .carrusel-habilidades-wrapper {
+        gap: 8px;
+    }
+    .boton-carrusel {
+        display: none;
+    }
+    .tarjeta-habilidad {
+        width: 220px;
+    }
+    .pista-habilidades {
+        gap: 30px;
+    }
+}
